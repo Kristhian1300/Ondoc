@@ -91,12 +91,22 @@ const SignInScreen = () => {
           }}
         />
 
-<CustomButton 
+<CustomButton
           text={loading ? 'Loading...' : 'Iniciar sesión'} 
           onPress={handleSubmit(onSignInPressed)} 
         />
-                            <Text style={styles.text}>¿Ya estas registrado en onDocument?</Text>
-                            <Text style={styles.text}>Registrarse</Text>
+
+<CustomButton 
+          text="Forgot password?"
+          onPress={onForgotPasswordPressed}
+          type="TERTIARY"
+        />
+                             <CustomButton
+          text="Ya estas registrado?
+          Registrate"
+          onPress={onSignUpPress}
+          type="TERTIARY"
+        />
                         </SafeAreaView>
                     </View>
                 </View>
@@ -104,45 +114,7 @@ const SignInScreen = () => {
         
       <View style={styles.root}>
 
-        <CustomInput
-          name="username"
-          placeholder="Username"
-          control={control}
-          rules={{required: 'Username is required'}}
-        />
-
-        <CustomInput
-          name="password"
-          placeholder="Password"
-          secureTextEntry
-          control={control}
-          rules={{
-            required: 'Password is required',
-            minLength: {
-              value: 3,
-              message: 'Password should be minimum 3 characters long',
-            },
-          }}
-        />
-
-        <CustomButton 
-          text={loading ? 'Loading...' : 'Iniciar sesión'} 
-          onPress={handleSubmit(onSignInPressed)} 
-        />
-
-        <CustomButton
-          text="Forgot password?"
-          onPress={onForgotPasswordPressed}
-          type="TERTIARY"
-        />
-
-        {/*<SocialSignInButtons />*/}
-
-        <CustomButton
-          text="Don't have an account? Create one"
-          onPress={onSignUpPress}
-          type="TERTIARY"
-        />
+        
         
       </View>
     </ScrollView>
@@ -203,7 +175,7 @@ formField : {
 text: {
     color: 'white',
     textAlign: 'center'
-}
+},
 });
 
 export default SignInScreen;

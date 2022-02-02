@@ -57,7 +57,11 @@ const SignInScreen = () => {
     <LinearGradient colors={['#BC1C06','#000000','#000000']} style={styles.body}>
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
-                
+    <Image
+          source={logo}
+          style={[styles.logo, {height: 80, width: 60}]}
+          resizeMode="contain"
+        />
                 <View style={styles.card}>
                     <View style={styles.cardAction}>
                         <Text style={styles.textLogin}>Inicio de sesion</Text>
@@ -66,17 +70,31 @@ const SignInScreen = () => {
                     <View style={styles.cardContent}> 
 
                         <SafeAreaView style={styles.formField}>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Nombre de usuario"
-                            />
+                        <CustomInput
+          name="username"
+          placeholder="Username"
+          control={control}
+          rules={{required: 'Username is required'}}
+        />
                         
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Clave"
-                            />
+                        <CustomInput
+          name="password"
+          placeholder="Password"
+          secureTextEntry
+          control={control}
+          rules={{
+            required: 'Password is required',
+            minLength: {
+              value: 3,
+              message: 'Password should be minimum 3 characters long',
+            },
+          }}
+        />
 
-                            {/*<ButtonLogin />*/}
+<CustomButton 
+          text={loading ? 'Loading...' : 'Iniciar sesión'} 
+          onPress={handleSubmit(onSignInPressed)} 
+        />
                             <Text style={styles.text}>¿Ya estas registrado en onDocument?</Text>
                             <Text style={styles.text}>Registrarse</Text>
                         </SafeAreaView>
@@ -85,11 +103,6 @@ const SignInScreen = () => {
             </View>
         
       <View style={styles.root}>
-        {/*<Image
-          source={Logo}
-          style={[styles.logo, {height: height * 0.3}]}
-          resizeMode="contain"
-        />*/}
 
         <CustomInput
           name="username"

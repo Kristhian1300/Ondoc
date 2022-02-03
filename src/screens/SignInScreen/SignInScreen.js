@@ -10,7 +10,7 @@ import {
   SafeAreaView,
   Alert
 } from 'react-native';
-import logo from '../../img/logo.jpeg'
+import logo from '../../img/logo.png'
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 //import SocialSignInButtons from '../../components/SocialSignInButtons';
@@ -59,7 +59,7 @@ const SignInScreen = () => {
     <View style={styles.container}>
     <Image
           source={logo}
-          style={[styles.logo, {height: 80, width: 60}]}
+          style={[styles.logo, {height: 180, width: 370, paddingTop: 130, paddingBottom: 80, marginTop: 30}]}
           resizeMode="contain"
         />
                 <View style={styles.card}>
@@ -91,7 +91,7 @@ const SignInScreen = () => {
           }}
         />
 
-<CustomButton
+<CustomButton style={{backgroundColor: 'black'}}
           text={loading ? 'Loading...' : 'Iniciar sesión'} 
           onPress={handleSubmit(onSignInPressed)} 
         />
@@ -99,11 +99,17 @@ const SignInScreen = () => {
 <CustomButton 
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
-          type="TERTIARY"
+          type="TERTIARY2"
         />
+
+<CustomButton 
+          text="Ya estas registrado en onDoc?"
+          onPress={onForgotPasswordPressed}
+          type="TERTIARY2"
+        />
+
                              <CustomButton
-          text="Ya estas registrado?
-          Registrate"
+          text="Registrate"
           onPress={onSignUpPress}
           type="TERTIARY"
         />
@@ -128,9 +134,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    width: '70%',
-    maxWidth: 300,
-    maxHeight: 200,
+    
   },
   body: {
     width: 500,
@@ -143,7 +147,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
     width: "100%",
-    height: "18%",
+    height: "14%",
 },
 textLogin: {
     color: '#B83011',
@@ -152,13 +156,14 @@ textLogin: {
 },
 card: {
     width: '75%',
-    padding: 0
+    padding: 20,
+    paddingTop: 80
 },
 cardContent: {
     color: '#fff',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 4,
-    height: '60%'
+    borderRadius: 12,
+    height: 400
 },
 container: {
     marginLeft: 15

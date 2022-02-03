@@ -1,13 +1,10 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Auth} from 'aws-amplify';
+import {Auth, API} from 'aws-amplify';
+import * as queries from '../../graphql/queries';
 
 const index = () => {
-  const signOut = () => {
-    Auth.signOut();
-  };
-
   return (
     <LinearGradient
       colors={['#8C1C06', '#8C1C06', '#8C1C06']}

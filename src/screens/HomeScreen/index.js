@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import { Auth } from 'aws-amplify';
+import {Auth} from 'aws-amplify';
 
 const index = () => {
   const signOut = () => {
@@ -18,7 +18,7 @@ const index = () => {
           color: 'red',
           marginTop: 'auto',
           marginVertical: 20,
-          fontSize: 20
+          fontSize: 20,
         }}>
         Cerrar sesión
       </Text>

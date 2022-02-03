@@ -41,7 +41,7 @@ const Navigation = () => {
     return () => Hub.remove('auth', listener);
   }, []);*/
 
-  if (user) {
+  if (user == undefined) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <ActivityIndicator />

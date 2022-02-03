@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, ScrollView, Alert} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 //import SocialSignInButtons from '../../components/SocialSignInButtons';
+import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 import {useForm} from 'react-hook-form';
 import { Auth } from 'aws-amplify';
@@ -25,28 +26,30 @@ const ForgotPasswordScreen = () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
-        <Text style={styles.title}>Reset your password</Text>
+    <LinearGradient colors={['#BC1C06','#000000','#000000']} style={styles.body}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.root}>
+          <Text style={styles.title}>Restablecer la contraseña</Text>
 
-        <CustomInput
-          name="username"
-          control={control}
-          placeholder="Username"
-          rules={{
-            required: 'Username is required',
-          }}
-        />
+          <CustomInput
+            name="username"
+            control={control}
+            placeholder="Nombre de usuario"
+            rules={{
+              required: 'Username is required',
+            }}
+          />
 
-        <CustomButton text="Send" onPress={handleSubmit(onSendPressed)} />
+          <CustomButton text="Enviar" onPress={handleSubmit(onSendPressed)} />
 
-        <CustomButton
-          text="Back to Sign in"
-          onPress={onSignInPress}
-          type="TERTIARY"
-        />
-      </View>
-    </ScrollView>
+          <CustomButton
+            text="Regresar a Inicio"
+            onPress={onSignInPress}
+            type="TERTIARY"
+          />
+        </View>
+      </ScrollView>
+    </LinearGradient>
   );
 };
 
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#051C60',
+    color: 'white',
     margin: 10,
   },
   text: {
@@ -66,8 +69,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   link: {
-    color: '#FDB075',
+    color: 'white',
   },
+  body: {
+    width: 400,
+    height: 1000
+  }
 });
 
 export default ForgotPasswordScreen;

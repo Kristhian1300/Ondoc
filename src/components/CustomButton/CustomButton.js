@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
   },
 
   container_PRIMARY: {
-    backgroundColor: '#3B71F3',
+    backgroundColor: '#BB3011',
+    marginTop: 30
   },
 
   container_SECONDARY: {
@@ -54,7 +55,11 @@ const styles = StyleSheet.create({
   },
 
   text_TERTIARY: {
-    color: 'gray',
+    color: '#BB3011',
+    margin: -30
+  },
+  text_TERTIARY2: {
+    color: 'white',
   },
 });
 

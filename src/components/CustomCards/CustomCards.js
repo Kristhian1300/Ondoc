@@ -1,8 +1,8 @@
-import React from "react";
-import { View, ScrollView, StyleSheet, Image } from "react-native";
-import { Text, Card, Button, Icon } from "react-native-elements";
+import React from 'react';
+import {View, ScrollView, StyleSheet, Image} from 'react-native';
+import {Text, Card, Button, Icon} from 'react-native-elements';
 
-const CustomCards = ({ title, content, expirationData }) => {
+const CustomCards = ({title, content, expirationData}) => {
   return (
     <>
       <ScrollView>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   user: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginBottom: 6,
   },
   image: {

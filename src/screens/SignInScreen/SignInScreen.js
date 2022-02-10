@@ -54,29 +54,68 @@ const SignInScreen = () => {
   };
 
   return (
-    <LinearGradient
-      colors={["#BC1C06", "#000000", "#000000"]}
-      style={styles.body}
-    >
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-          <Image
-            source={logo}
-            style={[
-              styles.logo,
-              {
-                height: 180,
-                width: 370,
-                paddingTop: 130,
-                paddingBottom: 80,
-                marginTop: 30,
-              },
-            ]}
-            resizeMode="contain"
-          />
-          <View style={styles.card}>
-            <View style={styles.cardAction}>
-              <Text style={styles.textLogin}>Inicio de sesion</Text>
+    <LinearGradient colors={['#BC1C06','#000000','#000000']} style={styles.body}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+    <View style={styles.container}>
+    <Image
+          source={logo}
+          style={[styles.logo, {height: 180, width: 370, paddingTop: 130, paddingBottom: 80, marginTop: 30}]}
+          resizeMode="contain"
+        />
+                <View style={styles.card}>
+                    <View style={styles.cardAction}>
+                        <Text style={styles.textLogin}>Inicio de sesion</Text>
+                    </View>
+
+                    <View style={styles.cardContent}> 
+
+                        <SafeAreaView style={styles.formField}>
+                        <CustomInput
+          name="username"
+          placeholder="Username"
+          control={control}
+          rules={{required: 'Username is required'}}
+        />
+                        
+                        <CustomInput
+          name="password"
+          placeholder="Password"
+          secureTextEntry
+          control={control}
+          rules={{
+            required: 'Password is required',
+            minLength: {
+              value: 3,
+              message: 'Password should be minimum 3 characters long',
+            },
+          }}
+        />
+
+<CustomButton style={{backgroundColor: 'black'}}
+          text={loading ? 'Loading...' : 'Iniciar sesión'} 
+          onPress={handleSubmit(onSignInPressed)} 
+        />
+
+<CustomButton 
+          text="Forgot password?"
+          onPress={onForgotPasswordPressed}
+          type="TERTIARY2"
+        />
+
+<CustomButton 
+          text="Ya estas registrado en onDoc?"
+          onPress={onForgotPasswordPressed}
+          type="TERTIARY2"
+        />
+
+                             <CustomButton
+          text="Registrate"
+          onPress={onSignUpPress}
+          type="TERTIARY"
+        />
+                        </SafeAreaView>
+                    </View>
+                </View>
             </View>
 
             <View style={styles.cardContent}>
@@ -141,7 +180,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
-  logo: {},
+  logo: {
+    
+  },
   body: {
     width: 500,
     height: 1000,
@@ -154,28 +195,28 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 12,
     width: "100%",
     height: "14%",
-  },
-  textLogin: {
-    color: "#B83011",
-    fontWeight: "bold",
+},
+textLogin: {
+    color: '#B83011',
+    fontWeight: 'bold',
     fontSize: 16,
-  },
-  card: {
-    width: "75%",
+},
+card: {
+    width: '75%',
     padding: 20,
-    paddingTop: 80,
-  },
-  cardContent: {
-    color: "#fff",
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    paddingTop: 80
+},
+cardContent: {
+    color: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 12,
-    height: 400,
-  },
-  container: {
-    marginLeft: 15,
-  },
-  input: {
-    color: "#fff",
+    height: 400
+},
+container: {
+    marginLeft: 15
+},
+input: {
+    color: '#fff',
     borderRadius: 4,
     fontSize: 15,
   },

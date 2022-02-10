@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,26 +8,26 @@ import {
   ScrollView,
   TextInput,
   SafeAreaView,
-  Alert
-} from 'react-native';
-import logo from '../../img/logo.png'
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
+  Alert,
+} from "react-native";
+import logo from "../../img/logo.png";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
 //import SocialSignInButtons from '../../components/SocialSignInButtons';
-import {useNavigation} from '@react-navigation/native';
-import {useForm, Controller} from 'react-hook-form';
-import LinearGradient from 'react-native-linear-gradient';
-import { Auth } from 'aws-amplify';
+import { useNavigation } from "@react-navigation/native";
+import { useForm, Controller } from "react-hook-form";
+import LinearGradient from "react-native-linear-gradient";
+import { Auth } from "aws-amplify";
 
 const SignInScreen = () => {
-  const {height} = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
 
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm();
 
   const onSignInPressed = async (data) => {
@@ -36,21 +36,21 @@ const SignInScreen = () => {
     }
 
     setLoading(true);
-    try{
+    try {
       const response = await Auth.signIn(data.username, data.password);
       console.log(response);
     } catch (e) {
-      Alert.alert('Oops', e.message);
+      Alert.alert("Oops", e.message);
     }
     setLoading(false);
   };
 
   const onForgotPasswordPressed = () => {
-    navigation.navigate('ForgotPassword');
+    navigation.navigate("ForgotPassword");
   };
 
   const onSignUpPress = () => {
-    navigation.navigate('SignUp');
+    navigation.navigate("SignUp");
   };
 
   return (
@@ -117,20 +117,67 @@ const SignInScreen = () => {
                     </View>
                 </View>
             </View>
-        
-      <View style={styles.root}>
 
-        
-        
-      </View>
-    </ScrollView>
+            <View style={styles.cardContent}>
+              <SafeAreaView style={styles.formField}>
+                <CustomInput
+                  name="username"
+                  placeholder="Username"
+                  control={control}
+                  rules={{ required: "Username is required" }}
+                />
+
+                <CustomInput
+                  name="password"
+                  placeholder="Password"
+                  secureTextEntry
+                  control={control}
+                  rules={{
+                    required: "Password is required",
+                    minLength: {
+                      value: 3,
+                      message: "Password should be minimum 3 characters long",
+                    },
+                  }}
+                />
+
+                <CustomButton
+                  style={{ backgroundColor: "black" }}
+                  text={loading ? "Loading..." : "Iniciar sesión"}
+                  onPress={handleSubmit(onSignInPressed)}
+                />
+
+                <CustomButton
+                  text="Forgot password?"
+                  onPress={onForgotPasswordPressed}
+                  type="TERTIARY2"
+                />
+
+                <CustomButton
+                  text="Ya estas registrado en onDoc?"
+                  onPress={onForgotPasswordPressed}
+                  type="TERTIARY2"
+                />
+
+                <CustomButton
+                  text="Registrate"
+                  onPress={onSignUpPress}
+                  type="TERTIARY"
+                />
+              </SafeAreaView>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.root}></View>
+      </ScrollView>
     </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 20,
   },
   logo: {
@@ -138,12 +185,12 @@ const styles = StyleSheet.create({
   },
   body: {
     width: 500,
-    height: 1000
+    height: 1000,
   },
   cardAction: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ECEEEF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ECEEEF",
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
     width: "100%",
@@ -172,15 +219,15 @@ input: {
     color: '#fff',
     borderRadius: 4,
     fontSize: 15,
-},
-formField : {
-    lineHeight: '2.5em',
-    borderBottom: '15px solid #4caf50',
-},
-text: {
-    color: 'white',
-    textAlign: 'center'
-},
+  },
+  formField: {
+    lineHeight: "2.5em",
+    borderBottom: "15px solid #4caf50",
+  },
+  text: {
+    color: "white",
+    textAlign: "center",
+  },
 });
 
 export default SignInScreen;

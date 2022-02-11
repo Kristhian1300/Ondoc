@@ -28,3 +28,48 @@ export const listDocuments = /* GraphQL */ `
     }
   }
 `;
+export const getInformationDocuments = /* GraphQL */ `
+  query GetInformationDocuments($id: ID!) {
+    getInformationDocuments(id: $id) {
+      id
+      title
+      modality
+      minerals
+      municipalitiesDepartments
+      codeRMN
+      codeFile
+      groupWork
+      dateRegistration
+      dateEnds
+      dateContract
+    }
+  }
+`;
+export const listInformationDocuments = /* GraphQL */ `
+  query ListInformationDocuments(
+    $filter: TableInformationDocumentsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listInformationDocuments(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        modality
+        minerals
+        municipalitiesDepartments
+        codeRMN
+        codeFile
+        groupWork
+        dateRegistration
+        dateEnds
+        dateContract
+      }
+      nextToken
+    }
+  }
+`;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -9,29 +9,28 @@ import {
   TextInput,
   SafeAreaView,
   Alert,
-} from "react-native";
-import OD from "../../img/OD.png";
-import CustomInput from "../../components/CustomInput";
-import CustomButton from "../../components/CustomButton";
+} from 'react-native';
+import logo from '../../img/logo.png';
+import CustomInput from '../../components/CustomInput';
+import CustomButton from '../../components/CustomButton';
 //import SocialSignInButtons from '../../components/SocialSignInButtons';
-import { useNavigation } from "@react-navigation/native";
-import { useForm, Controller } from "react-hook-form";
-import LinearGradient from "react-native-linear-gradient";
-import { Auth } from "aws-amplify";
-import { Input } from "react-native-elements";
+import {useNavigation} from '@react-navigation/native';
+import {useForm, Controller} from 'react-hook-form';
+import LinearGradient from 'react-native-linear-gradient';
+import {Auth} from 'aws-amplify';
 
 const SignInScreen = () => {
-  const { height } = useWindowDimensions();
+  const {height} = useWindowDimensions();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
 
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm();
 
-  const onSignInPressed = async (data) => {
+  const onSignInPressed = async data => {
     if (loading) {
       return;
     }
@@ -41,28 +40,27 @@ const SignInScreen = () => {
       const response = await Auth.signIn(data.username, data.password);
       console.log(response);
     } catch (e) {
-      Alert.alert("Oops", e.message);
+      Alert.alert('Oops', e.message);
     }
     setLoading(false);
   };
 
   const onForgotPasswordPressed = () => {
-    navigation.navigate("ForgotPassword");
+    navigation.navigate('ForgotPassword');
   };
 
   const onSignUpPress = () => {
-    navigation.navigate("SignUp");
+    navigation.navigate('SignUp');
   };
 
   return (
     <LinearGradient
-      colors={["#BC1C06", "#000000", "#000000"]}
-      style={styles.body}
-    >
+      colors={['#BC1C06', '#000000', '#000000']}
+      style={styles.body}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Image
-            source={OD}
+            source={logo}
             style={[
               styles.logo,
               {
@@ -106,7 +104,7 @@ const SignInScreen = () => {
                   name="username"
                   placeholder="Username"
                   control={control}
-                  rules={{ required: "Username is required" }}
+                  rules={{required: 'Username is required'}}
                 />
 
                 <CustomInput
@@ -115,17 +113,17 @@ const SignInScreen = () => {
                   secureTextEntry
                   control={control}
                   rules={{
-                    required: "Password is required",
+                    required: 'Password is required',
                     minLength: {
                       value: 3,
-                      message: "Password should be minimum 3 characters long",
+                      message: 'Password should be minimum 3 characters long',
                     },
                   }}
                 />
 
                 <CustomButton
-                  style={{ backgroundColor: "black" }}
-                  text={loading ? "Loading..." : "Iniciar sesión"}
+                  style={{backgroundColor: 'black'}}
+                  text={loading ? 'Loading...' : 'Iniciar sesión'}
                   onPress={handleSubmit(onSignInPressed)}
                 />
 
@@ -159,56 +157,54 @@ const SignInScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: "center",
+    alignItems: 'center',
     padding: 20,
   },
-  logo: {
-    
-  },
+  logo: {},
   body: {
     width: 500,
     height: 1000,
   },
   cardAction: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#ECEEEF",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ECEEEF',
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
-    width: "100%",
-    height: "14%",
-},
-textLogin: {
+    width: '100%',
+    height: '14%',
+  },
+  textLogin: {
     color: '#B83011',
     fontWeight: 'bold',
     fontSize: 16,
-},
-card: {
+  },
+  card: {
     width: '75%',
     padding: 20,
-    paddingTop: 80
-},
-cardContent: {
+    paddingTop: 80,
+  },
+  cardContent: {
     color: '#fff',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 12,
-    height: 400
-},
-container: {
-    marginLeft: 15
-},
-input: {
+    height: 400,
+  },
+  container: {
+    marginLeft: 15,
+  },
+  input: {
     color: '#fff',
     borderRadius: 4,
     fontSize: 15,
   },
   formField: {
-    lineHeight: "2.5em",
-    borderBottom: "15px solid #4caf50",
+    lineHeight: '2.5em',
+    borderBottom: '15px solid #4caf50',
   },
   text: {
-    color: "white",
-    textAlign: "center",
+    color: 'white',
+    textAlign: 'center',
   },
 });
 

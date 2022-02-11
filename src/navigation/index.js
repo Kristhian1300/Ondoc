@@ -8,6 +8,7 @@ import SignUpScreen from "../screens/SignUpScreen";
 import ConfirmEmailScreen from "../screens/ConfirmEmailScreen";
 import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 import NewPasswordScreen from "../screens/NewPasswordScreen";
+import DetailsScreen from "../screens/DetailsScreen";
 import HomeScreen from "../screens/HomeScreen";
 import { Auth, Hub } from "aws-amplify";
 import AccessibilityInfo from "react-native/Libraries/Components/AccessibilityInfo/AccessibilityInfo";
@@ -55,17 +56,20 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <>
+            <Stack.Screen name='Home' component={HomeScreen} />
+            <Stack.Screen name='Details' component={DetailsScreen} />
+          </>
         ) : (
           <>
-            <Stack.Screen name="SignIn" component={SignInScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-            <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
+            <Stack.Screen name='SignIn' component={SignInScreen} />
+            <Stack.Screen name='SignUp' component={SignUpScreen} />
+            <Stack.Screen name='ConfirmEmail' component={ConfirmEmailScreen} />
             <Stack.Screen
-              name="ForgotPassword"
+              name='ForgotPassword'
               component={ForgotPasswordScreen}
             />
-            <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
+            <Stack.Screen name='NewPassword' component={NewPasswordScreen} />
           </>
         )}
       </Stack.Navigator>

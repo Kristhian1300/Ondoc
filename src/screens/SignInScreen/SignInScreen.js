@@ -80,7 +80,27 @@ const SignInScreen = () => {
 
             <View style={styles.cardContent}>
               <SafeAreaView style={styles.formField}>
-                <CustomInput
+                <Input placeholder="Email" type="email"
+                   name="username"
+                   placeholder="Username"
+                   control={control}
+                   rules={{ required: "Username is required" }}
+                />
+                <Input placeholder="Email" type="email"
+                   name="password"
+                   placeholder="Password"
+                   secureTextEntry
+                   control={control}
+                   rules={{
+                     required: "Password is required",
+                     minLength: {
+                       value: 3,
+                       message: "Password should be minimum 3 characters long",
+                     },
+                   }}
+                />
+                <CustomInput placeholder="Email"
+                  type="email"
                   name="username"
                   placeholder="Username"
                   control={control}

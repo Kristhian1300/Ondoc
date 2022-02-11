@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import {API, Auth} from 'aws-amplify';
-import * as queries from '../../graphql/queries';
-import {StyleSheet, View, Text} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import {ListDocuments} from './ListDocuments';
+import React, { useState, useEffect } from "react";
+import { API, Auth } from "aws-amplify";
+import * as queries from "../../graphql/queries";
+import { StyleSheet, View, Text } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+import { ListDocuments } from "./ListDocuments";
 import {
   SendEmail,
   SendSMS,
   SendVoice,
   SendWhatsapp,
-} from '../../components/axios';
-import {fecha} from '../../../utils/day';
+} from "../../components/axios";
+import { fecha } from "../../../utils/day";
 
 const expiredDocuments = [];
 
@@ -24,70 +24,70 @@ const index = () => {
     try {
       await Auth.signOut();
     } catch (error) {
-      console.log('error signing out: ', error);
+      console.log("error signing out: ", error);
     }
   }
   const fetchProducts = async () => {
     try {
       const documents = await API.graphql({
-        query: queries.listDocuments,
-        authMode: 'AMAZON_COGNITO_USER_POOLS',
+        query: queries.listInformationDocuments,
+        authMode: "AMAZON_COGNITO_USER_POOLS",
       });
-      if (documents.data.listDocuments) {
-        setData(documents.data.listDocuments.items);
-        documents.data.listDocuments.items.map(item => {
-          if (item.expirationData == fecha || item.expirationData > fecha) {
+      if (documents.data.listInformationDocuments) {
+        setData(documents.data.listInformationDocuments.items);
+        documents.data.listInformationDocuments.items.map((item) => {
+          if (item.dateEnds == fecha || item.dateEnds < fecha) {
             SendWhatsapp({
-              to: '+573165580810',
-              body: 'Html',
+              to: "+573165580810",
+              body: "Html",
             })
-              .then(e => {
+              .then((e) => {
                 setSend(+1);
               })
-              .catch(error => {
+              .catch((error) => {
                 setSendError(+1);
-                console.log('ok Whatsapp');
+                console.log("ok Whatsapp");
               });
             SendSMS({
-              to: '+573165580810',
-              body: 'Html',
+              to: "+573165580810",
+              body: "Html",
             })
-              .then(e => {
+              .then((e) => {
                 setSend(+1);
               })
-              .catch(error => {
+              .catch((error) => {
                 setSendError(+1);
-                console.log('ok SMS');
+                console.log("ok SMS");
               });
             SendEmail({
-              email: 'jszorrilla4@misena.edu.co',
-              DocumentId: parseInt(item.content),
+              email: "jszorrilla4@misena.edu.co",
+              DocumentId: parseInt(item.codeFile),
               NameDocument: item.title,
-              html: 'Juan',
+              html: "Juan",
             })
-              .then(e => {
+              .then((e) => {
                 setSend(+1);
               })
-              .catch(error => {
+              .catch((error) => {
                 setSendError(+1);
-                console.log('ok Email');
+                console.log("ok Email");
               });
             SendVoice({
-              to: '+573165580810',
+              to: "+573165580810",
             })
-              .then(e => {
+              .then((e) => {
                 setSend(+1);
               })
-              .catch(error => {
+              .catch((error) => {
                 setSendError;
-                console.log('ok Voice');
+                console.log("ok Voice");
               });
             expiredDocuments.push(item.title);
           }
         });
       }
     } catch (e) {
-      console.log('nada');
+      console.log("nada");
     }
   };
 
@@ -103,14 +103,14 @@ const index = () => {
   return (
     <>
       <LinearGradient
-        colors={['#8C1C06', '#8C1C06', '#8C1C06']}
+        colors={["#8C1C06", "#8C1C06", "#8C1C06"]}
         style={styles.body}>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <Text
             style={{
               fontSize: 24,
-              alignSelf: 'center',
-              color: 'white',
+              alignSelf: "center",
+              color: "white",
               fontSize: 30,
               padding: 90,
             }}>
@@ -118,22 +118,22 @@ const index = () => {
             <Text
               style={{
                 fontSize: 11,
-                alignSelf: 'center',
-                color: 'white',
+                alignSelf: "center",
+                color: "white",
                 fontSize: 30,
                 padding: 90,
               }}>
-              Se han enviado {send} notifaciones {'\n'}
+              Se han enviado {send} notifaciones {"\n"}
               No se han podido enviar {sendError} notifaciones
             </Text>
           </Text>
           <Text
             onPress={signOut}
             style={{
-              width: '100%',
-              textAlign: 'center',
-              color: 'red',
-              marginTop: 'auto',
+              width: "100%",
+              textAlign: "center",
+              color: "red",
+              marginTop: "auto",
               marginVertical: 20,
               fontSize: 20,
             }}>
@@ -162,14 +162,14 @@ const styles = StyleSheet.create({
     borderTopRadius: 20,
   },
   containerData: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     width: 400,
     height: 600,
     borderRadius: 20,
   },
   listWrapper: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     borderBottomWidth: 0.5,
   },
   row: {

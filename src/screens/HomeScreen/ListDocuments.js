@@ -1,8 +1,16 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet, RefreshControl } from "react-native";
+import { View, FlatList, RefreshControl } from "react-native";
 import CustomCards from "../../components/CustomCards/CustomCards";
 
+import { useNavigation } from "@react-navigation/core";
+
 export const ListDocuments = ({ productList, refreshing, onRefresh }) => {
+  const navigation = useNavigation();
+  const detailsDocumentsPressed = (itemId) => {
+    navigation.navigate("Details", {
+      itemId,
+    });
+  };
   return (
     <View>
       {productList && (
@@ -20,8 +28,9 @@ export const ListDocuments = ({ productList, refreshing, onRefresh }) => {
             return (
               <CustomCards
                 title={item.title}
-                content={item.content}
-                expirationData={item.expirationData}
+                content={item.minerals}
+                expirationData={item.dateEnds}
+                onPress={() => detailsDocumentsPressed(item.id)}
               />
             );
           }}

@@ -45,16 +45,15 @@ const SignUpScreen = () => {
   return (
     <LinearGradient
       colors={["#BC1C06", "#000000", "#000000"]}
-      style={styles.body}
-    >
+      style={styles.body}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.root}>
           <Text style={styles.title}>Crear cuenta</Text>
 
           <CustomInput
-            name="name"
+            name='name'
             control={control}
-            placeholder="Nombre"
+            placeholder='Nombre'
             rules={{
               required: "Nombre es requerido",
               minLength: {
@@ -68,9 +67,9 @@ const SignUpScreen = () => {
             }}
           />
           <CustomInput
-            name="username"
+            name='username'
             control={control}
-            placeholder="Nombre de usuario"
+            placeholder='Nombre de usuario'
             rules={{
               required: "Nombre de usuario es requerido",
               pattern: {
@@ -80,9 +79,9 @@ const SignUpScreen = () => {
             }}
           />
           <CustomInput
-            name="phone_number"
+            name='phone_number'
             control={control}
-            placeholder="Celular"
+            placeholder='Celular'
             rules={{
               required: "Celular es requerid0",
               minLength: {
@@ -92,18 +91,18 @@ const SignUpScreen = () => {
             }}
           />
           <CustomInput
-            name="email"
+            name='email'
             control={control}
-            placeholder="Email"
+            placeholder='Email'
             rules={{
               required: "Email is required",
               pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
             }}
           />
           <CustomInput
-            name="password"
+            name='password'
             control={control}
-            placeholder="Password"
+            placeholder='Password'
             secureTextEntry
             rules={{
               required: "Password is required",
@@ -114,9 +113,9 @@ const SignUpScreen = () => {
             }}
           />
           <CustomInput
-            name="password-repeat"
+            name='password-repeat'
             control={control}
-            placeholder="Repeat Password"
+            placeholder='Repeat Password'
             secureTextEntry
             rules={{
               validate: (value) => value === pwd || "Password do not match",
@@ -124,7 +123,7 @@ const SignUpScreen = () => {
           />
 
           <CustomButton
-            text="Registrarse"
+            text='Registrarse'
             onPress={handleSubmit(onRegisterPressed)}
           />
 
@@ -142,9 +141,9 @@ const SignUpScreen = () => {
           {/*<SocialSignInButtons />*/}
 
           <CustomButton
-            text="Ya tienes una cuenta? Inicia sesion"
+            text='Ya tienes una cuenta? Inicia sesion'
             onPress={onSignInPress}
-            type="TERTIARY"
+            type='TERTIARY'
           />
         </View>
       </ScrollView>

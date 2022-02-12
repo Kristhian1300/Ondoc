@@ -4,12 +4,11 @@ import CustomCards from "../../components/CustomCards/CustomCards";
 
 import { useNavigation } from "@react-navigation/core";
 
-export const ListDocuments = ({ productList, refreshing, onRefresh }) => {
+export const ListDocuments = ({ productList, refreshing, onRefresh, setCurrentTab, setDocumentID }) => {
   const navigation = useNavigation();
   const detailsDocumentsPressed = (itemId) => {
-    navigation.navigate("Details", {
-      itemId,
-    });
+    setDocumentID(itemId)
+    setCurrentTab('Details')
   };
   return (
     <View>

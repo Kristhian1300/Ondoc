@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
+  Input,
   Text,
   Image,
   StyleSheet,
@@ -14,23 +15,23 @@ import logo from '../../img/logo.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 //import SocialSignInButtons from '../../components/SocialSignInButtons';
-import {useNavigation} from '@react-navigation/native';
-import {useForm, Controller} from 'react-hook-form';
+import { useNavigation } from '@react-navigation/native';
+import { useForm, Controller } from 'react-hook-form';
 import LinearGradient from 'react-native-linear-gradient';
-import {Auth} from 'aws-amplify';
+import { Auth } from 'aws-amplify';
 
 const SignInScreen = () => {
-  const {height} = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
 
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm();
 
-  const onSignInPressed = async data => {
+  const onSignInPressed = async (data) => {
     if (loading) {
       return;
     }
@@ -56,7 +57,8 @@ const SignInScreen = () => {
   return (
     <LinearGradient
       colors={['#BC1C06', '#000000', '#000000']}
-      style={styles.body}>
+      style={styles.body}
+    >
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Image
@@ -80,7 +82,7 @@ const SignInScreen = () => {
 
             <View style={styles.cardContent}>
               <SafeAreaView style={styles.formField}>
-                <Input placeholder="Email" type="email"
+                {/*<Input placeholder="Email" type="email"
                    name="username"
                    placeholder="Username"
                    control={control}
@@ -98,13 +100,14 @@ const SignInScreen = () => {
                        message: "Password should be minimum 3 characters long",
                      },
                    }}
-                />
-                <CustomInput placeholder="Email"
+                  />*/}
+                <CustomInput
+                  placeholder="Email"
                   type="email"
                   name="username"
                   placeholder="Username"
                   control={control}
-                  rules={{required: 'Username is required'}}
+                  rules={{ required: 'Username is required' }}
                 />
 
                 <CustomInput
@@ -122,7 +125,7 @@ const SignInScreen = () => {
                 />
 
                 <CustomButton
-                  style={{backgroundColor: 'black'}}
+                  style={{ backgroundColor: 'black' }}
                   text={loading ? 'Loading...' : 'Iniciar sesión'}
                   onPress={handleSubmit(onSignInPressed)}
                 />

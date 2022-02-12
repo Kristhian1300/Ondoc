@@ -1,36 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createDocument = /* GraphQL */ `
-  mutation CreateDocument($input: CreateDocumentInput!) {
-    createDocument(input: $input) {
-      id
-      title
-      content
-      expirationData
-    }
-  }
-`;
-export const updateDocument = /* GraphQL */ `
-  mutation UpdateDocument($input: UpdateDocumentInput!) {
-    updateDocument(input: $input) {
-      id
-      title
-      content
-      expirationData
-    }
-  }
-`;
-export const deleteDocument = /* GraphQL */ `
-  mutation DeleteDocument($input: DeleteDocumentInput!) {
-    deleteDocument(input: $input) {
-      id
-      title
-      content
-      expirationData
-    }
-  }
-`;
 export const createInformationDocuments = /* GraphQL */ `
   mutation CreateInformationDocuments(
     $input: CreateInformationDocumentsInput!
@@ -47,6 +17,9 @@ export const createInformationDocuments = /* GraphQL */ `
       dateRegistration
       dateEnds
       dateContract
+      email
+      cellPhone
+      address
     }
   }
 `;
@@ -66,6 +39,9 @@ export const updateInformationDocuments = /* GraphQL */ `
       dateRegistration
       dateEnds
       dateContract
+      email
+      cellPhone
+      address
     }
   }
 `;
@@ -85,6 +61,9 @@ export const deleteInformationDocuments = /* GraphQL */ `
       dateRegistration
       dateEnds
       dateContract
+      email
+      cellPhone
+      address
     }
   }
 `;

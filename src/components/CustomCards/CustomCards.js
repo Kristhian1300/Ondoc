@@ -1,13 +1,13 @@
-import React from 'react';
-import { View, ScrollView, StyleSheet, Image } from 'react-native';
-import { Text, Card, Button, Icon } from 'react-native-elements';
-import CustomButton from '../CustomButton';
+import React from "react";
+import { View, ScrollView, StyleSheet, Image } from "react-native";
+import { Text, Card, Button, Icon } from "react-native-elements";
+import CustomButton from "../CustomButton";
 
 const CustomCards = ({ title, content, expirationData, onPress }) => {
   return (
     <>
-      <ScrollView>
-        <View style={styles.container}>
+      <View style={styles.container}>
+        <ScrollView>
           <Card>
             <Card.Title>{title}</Card.Title>
             <Text style={styles.fonts} h5>
@@ -15,9 +15,9 @@ const CustomCards = ({ title, content, expirationData, onPress }) => {
             </Text>
             <Card.Divider />
           </Card>
-          <CustomButton text="Details" onPress={onPress} type="TERTIARY2" />
-        </View>
-      </ScrollView>
+          <CustomButton text='Details' onPress={onPress} type='TERTIARY2' />
+        </ScrollView>
+      </View>
     </>
   );
 };
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   user: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 6,
   },
   image: {

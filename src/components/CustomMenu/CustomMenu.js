@@ -15,7 +15,7 @@ import { fecha } from '../../../utils/day';
 
 const expiredDocuments = [];
 
-const CustomMenu = ({ setCurrentTab, setDocumentID }) => {
+const CustomMenu = ({ setCurrentTab, setDocumentID, title }) => {
   const [data, setData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [send, setSend] = useState(0);
@@ -113,7 +113,8 @@ const CustomMenu = ({ setCurrentTab, setDocumentID }) => {
               fontSize: 24,
               alignSelf: 'center',
               color: 'white',
-              fontSize: 15,
+              fontSize: 25,
+              fontWeight: 'bold',
               padding: 20,
             }}
           >
@@ -127,8 +128,7 @@ const CustomMenu = ({ setCurrentTab, setDocumentID }) => {
                 padding: 90,
               }}
             >
-              Se han enviado {send} notifaciones {'\n'}
-              No se han podido enviar {sendError} notifaciones
+              {title}de
             </Text>
           </Text>
           <Text

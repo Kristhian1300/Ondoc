@@ -179,7 +179,7 @@ function index() {
                     marginTop: 30,
                     position: 'relative',
                     bottom: 85,
-                    left: 94,
+                    left: 110,
                   },
                 ]}
                 resizeMode="contain"

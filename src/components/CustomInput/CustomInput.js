@@ -40,6 +40,7 @@ const CustomInput = ({
               returnKeyType={returnKeyType}
               autoFocus={autoFocus}
               onChangeText={onChangeText}
+              onBlur={onBlur}
               onSubmitEditing={onSubmitEditing}
               multiline={multiline || true}
               ref={(r) => {
@@ -47,15 +48,17 @@ const CustomInput = ({
               }}*/
 
               value={value}
+              label="Email"
               onChangeText={onChange}
               onBlur={onBlur}
+              placeholderTextColor="#ECEEEF"
               placeholder={placeholder}
               style={styles.input}
               secureTextEntry={secureTextEntry}
             />
           </View>
           {error && (
-            <Text style={{ color: 'white', alignSelf: 'stretch' }}>
+            <Text style={{ color: 'red', alignSelf: 'stretch' }}>
               {error.message || 'Error'}
             </Text>
           )}
@@ -72,10 +75,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
   },
-  /*input: {
+  input: {
     paddingRight: 10,
     lineHeight: 23,
-    flex: 2,
+    flex: 0,
     textAlignVertical: 'top',
     width: 300,
     borderBottomColor: 'white',
@@ -83,8 +86,10 @@ const styles = StyleSheet.create({
     marginVertical: 25,
     marginTop: 40,
     marginLeft: 12,
-    color: 'green',
-  },*/
+    color: 'white',
+    textDecorationLine: 'none',
+    paddingLeft: 35,
+  },
 });
 
 export default CustomInput;

@@ -12,6 +12,8 @@ import {
   Alert,
 } from 'react-native';
 import logo from '../../img/logo.png';
+import user from '../../img/user.png';
+//import password from '../../img/password.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 //import SocialSignInButtons from '../../components/SocialSignInButtons';
@@ -102,6 +104,7 @@ const SignInScreen = () => {
                    }}
                   />*/}
                 <CustomInput
+                  style={styles.input}
                   placeholder="Email"
                   type="email"
                   name="username"
@@ -109,6 +112,19 @@ const SignInScreen = () => {
                   control={control}
                   rules={{ required: 'Username is required' }}
                 />
+                <Image
+                  source={user}
+                  style={{
+                    width: 25,
+                    height: 25,
+                    borderRadius: 10,
+                    marginTop: 0,
+                    tintColor: 'white',
+                    position: 'relative',
+                    bottom: 70,
+                    left: 12,
+                  }}
+                ></Image>
 
                 <CustomInput
                   name="password"
@@ -123,6 +139,19 @@ const SignInScreen = () => {
                     },
                   }}
                 />
+                {/*<Image
+                  source={password}
+                  style={{
+                    width: 25,
+                    height: 25,
+                    borderRadius: 10,
+                    marginTop: 0,
+                    tintColor: 'white',
+                    position: 'relative',
+                    bottom: 70,
+                    left: 12,
+                  }}
+                ></Image>*/}
 
                 <CustomButton
                   style={{ backgroundColor: 'black' }}
@@ -203,7 +232,7 @@ const styles = StyleSheet.create({
   },
   formField: {
     lineHeight: '2.5em',
-    borderBottom: '15px solid #4caf50',
+    borderBottom: '15px solid #ECEEEF',
   },
   text: {
     color: 'white',

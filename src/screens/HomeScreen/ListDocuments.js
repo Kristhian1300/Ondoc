@@ -1,21 +1,27 @@
-import React from "react";
-import { View, FlatList, RefreshControl } from "react-native";
-import CustomCards from "../../components/CustomCards/CustomCards";
+import React from 'react';
+import { View, FlatList, RefreshControl } from 'react-native';
+import CustomCards from '../../components/CustomCards/CustomCards';
 
-import { useNavigation } from "@react-navigation/core";
+import { useNavigation } from '@react-navigation/core';
 
-export const ListDocuments = ({ productList, refreshing, onRefresh, setCurrentTab, setDocumentID }) => {
+export const ListDocuments = ({
+  productList,
+  refreshing,
+  onRefresh,
+  setCurrentTab,
+  setDocumentID,
+}) => {
   const navigation = useNavigation();
   const detailsDocumentsPressed = (itemId) => {
-    setDocumentID(itemId)
-    setCurrentTab('Details')
+    setDocumentID(itemId);
+    setCurrentTab('Details');
   };
   return (
     <View>
       {productList && (
         <FlatList
           style={{
-            borderBottomColor: "black",
+            borderBottomColor: 'black',
             borderBottomWidth: 1,
           }}
           refreshControl={
@@ -29,6 +35,9 @@ export const ListDocuments = ({ productList, refreshing, onRefresh, setCurrentTa
                 title={item.title}
                 content={item.minerals}
                 expirationData={item.dateEnds}
+                modality={item.modality}
+                minerals={item.minerals}
+                municipalitiesDepartments={item.municipalitiesDepartments}
                 onPress={() => detailsDocumentsPressed(item.id)}
               />
             );

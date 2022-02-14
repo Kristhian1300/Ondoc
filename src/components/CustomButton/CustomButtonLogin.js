@@ -1,34 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable, TextInput } from 'react-native';
 
-const CustomButton = ({
+const CustomButtonLogin = (
   onPress,
   text,
   type = 'PRIMARY',
   bgColor,
-  fgColor,
-}) => {
+  fgColor
+) => {
   return (
     <>
-      {/*<Pressable
-        onPress={onPress}
-        style={[
-          styles.container,
-          styles[`container_${type}`],
-          bgColor ? { backgroundColor: bgColor } : {},
-        ]}
-      >
-        <Text
-          style={[
-            styles.text,
-            styles[`text_${type}`],
-            fgColor ? { color: fgColor } : {},
-          ]}
-        >
-          {text}
-        </Text>
-        </Pressable>*/}
-
       <Pressable
         onPress={onPress}
         style={[
@@ -37,34 +18,13 @@ const CustomButton = ({
           bgColor ? { backgroundColor: bgColor } : {},
         ]}
       >
-        <Text
-          style={[
-            styles.text,
-            styles[`text_${type}`],
-            fgColor ? { color: fgColor } : {},
-          ]}
-        >
-          {text}
-        </Text>
+        <Text>{text}</Text>
       </Pressable>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: '34%',
-    height: '40%',
-    backgroundColor: '#BB3011',
-
-    padding: 10,
-    marginVertical: 5,
-
-    alignItems: 'center',
-    borderRadius: 25,
-    marginLeft: 205,
-  },
-
   containerL: {
     width: '90%',
 
@@ -111,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomButton;
+export default CustomButtonLogin;

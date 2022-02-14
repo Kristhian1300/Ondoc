@@ -36,117 +36,100 @@ const DetailsScreen = ({ itemId }) => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <ScrollView style={styles.scrollViewWrapper}>
-          <Text style={styles.title}>Detalle</Text>
-          <View style={styles.dataDocuments}>
-            <View>
-              <Text style={styles.tileDocument}>{data.title}</Text>
-            </View>
-            <View style={styles.row}>
-              <View style={styles.leftDetails}>
-                <Text style={styles.titleDetails}>Telefonos</Text>
-                <Text style={styles.titleDetails}>Direccion</Text>
-                <Text style={styles.titleDetails}>Modalidad</Text>
-                <Text style={styles.titleDetails}>Correo Electronico</Text>
-                <Text style={styles.titleDetails}>Municipios-Departamento</Text>
-              </View>
-              <View style={styles.rightContainer}>
-                <Text style={styles.detailsData}>Telefonos</Text>
-                <Text style={styles.detailsData}>Direccion</Text>
-                <Text style={styles.detailsData}>{data.modality}</Text>
-                <Text style={styles.detailsData}>Correo Electronico</Text>
-                <Text style={styles.detailsData}>
-                  {data.municipalitiesDepartments}
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                borderBottomColor: '#f5f5f5',
-                borderBottomWidth: 1,
-                margin: 15,
-              }}
-            />
-            <View style={styles.row}>
-              <View style={styles.leftDetails}>
-                <Text style={styles.titleDetails}>Minerales</Text>
-                <Text style={styles.titleDetails}>Codigo RMN</Text>
-                <Text style={styles.titleDetails}>Codigo expediente</Text>
-                <Text style={styles.titleDetails}>Fecha registro</Text>
-                <Text style={styles.titleDetails}>Fecha terminar</Text>
-                <Text style={styles.titleDetails}>Fecha Contrato</Text>
-                <Text style={styles.titleDetails}>Grupo trabajo</Text>
-                <Text style={styles.titleDetails}>Estado expediente</Text>
-              </View>
-              <View style={styles.rightContainer}>
-                <Text style={styles.detailsData}>{data.minerals}</Text>
-                <Text style={styles.detailsData}>{data.codeRMN}</Text>
-                <Text style={styles.detailsData}>{data.codeFile}</Text>
-                <Text style={styles.detailsData}>{data.dateRegistration}</Text>
-                <Text style={styles.detailsData}>{data.dateEnds}</Text>
-                <Text style={styles.detailsData}>{data.dateContract}</Text>
-                <Text style={styles.detailsData}>{data.groupWork}</Text>
-                <Text style={styles.detailsData}>
-                  {data.dateEnds === fecha || data.dateEnds
-                    ? 'Titulo vigente - En ejecucion '
-                    : 'Buenas'}
-                </Text>
-              </View>
-            </View>
+    <View style={styles.container}>
+      <ScrollView>
+        <Text style={styles.title}>Detalle</Text>
+        <View style={styles.dataDocuments}>
+          <View>
+            <Text style={styles.tileDocument}>{data.title}</Text>
           </View>
-          <Text style={styles.titleDocuments}>Documentos</Text>
-          <View style={styles.dataDocuments}>
-            <View style={styles.documentImage1(true, false, false)}>
-              <Image
-                source={require('../../img/pdf1.png')}
-                style={styles.img}
-              />
-              <Text style={styles.urlImg}>
-                resolucion-754-del-26-de-noviembre-2021.pdf
-              </Text>
+          <View style={styles.row}>
+            <View style={styles.leftDetails}>
+              <Text style={styles.titleDetails}>Telefonos</Text>
+              <Text style={styles.titleDetails}>Direccion</Text>
+              <Text style={styles.titleDetails}>Modalidad</Text>
+              <Text style={styles.titleDetails}>Correo Electronico</Text>
+              <Text style={styles.titleDetails}>Municipios-Departamento</Text>
             </View>
-            <View style={styles.documentImage1(false, false, true)}>
-              <Image
-                source={require('../../img/pdf1.png')}
-                style={styles.img}
-              />
-              <Text style={styles.urlImg}>
-                resolucion-754-del-26-de-noviembre-2021.pdf
-              </Text>
-            </View>
-            <View style={styles.documentImage1(false, false, false)}>
-              <Image
-                source={require('../../img/pdf1.png')}
-                style={styles.img}
-              />
-              <Text style={styles.urlImg}>
-                resolucion-754-del-26-de-noviembre-2021.pdf
-              </Text>
-            </View>
-            <View style={styles.documentImage1(false, false, true)}>
-              <Image
-                source={require('../../img/pdf1.png')}
-                style={styles.img}
-              />
-              <Text style={styles.urlImg}>
-                resolucion-754-del-26-de-noviembre-2021.pdf
-              </Text>
-            </View>
-            <View style={styles.documentImage1(false, true, false)}>
-              <Image
-                source={require('../../img/pdf1.png')}
-                style={styles.img}
-              />
-              <Text style={styles.urlImg}>
-                resolucion-754-del-26-de-noviembre-2021.pdf
+            <View style={styles.rightContainer}>
+              <Text style={styles.detailsData}>Telefonos</Text>
+              <Text style={styles.detailsData}>Direccion</Text>
+              <Text style={styles.detailsData}>{data.modality}</Text>
+              <Text style={styles.detailsData}>Correo Electronico</Text>
+              <Text style={styles.detailsData}>
+                {data.municipalitiesDepartments}
               </Text>
             </View>
           </View>
-        </ScrollView>
-      </View>
-    </SafeAreaView>
+          <View
+            style={{
+              borderBottomColor: '#f5f5f5',
+              borderBottomWidth: 1,
+              margin: 15,
+            }}
+          />
+          <View style={styles.row}>
+            <View style={styles.leftDetails}>
+              <Text style={styles.titleDetails}>Minerales</Text>
+              <Text style={styles.titleDetails}>Codigo RMN</Text>
+              <Text style={styles.titleDetails}>Codigo expediente</Text>
+              <Text style={styles.titleDetails}>Fecha registro</Text>
+              <Text style={styles.titleDetails}>Fecha terminar</Text>
+              <Text style={styles.titleDetails}>Fecha Contrato</Text>
+              <Text style={styles.titleDetails}>Grupo trabajo</Text>
+              <Text style={styles.titleDetails}>Estado expediente</Text>
+            </View>
+            <View style={styles.rightContainer}>
+              <Text style={styles.detailsData}>{data.minerals}</Text>
+              <Text style={styles.detailsData}>{data.codeRMN}</Text>
+              <Text style={styles.detailsData}>{data.codeFile}</Text>
+              <Text style={styles.detailsData}>{data.dateRegistration}</Text>
+              <Text style={styles.detailsData}>{data.dateEnds}</Text>
+              <Text style={styles.detailsData}>{data.dateContract}</Text>
+              <Text style={styles.detailsData}>{data.groupWork}</Text>
+              <Text style={styles.detailsData}>
+                {data.dateEnds === fecha || data.dateEnds
+                  ? 'Titulo vigente - En ejecucion '
+                  : 'Buenas'}
+              </Text>
+            </View>
+          </View>
+        </View>
+        <Text style={styles.titleDocuments}>Documentos</Text>
+        <View style={styles.dataDocuments}>
+          <View style={styles.documentImage1(true, false, false)}>
+            <Image source={require('../../img/pdf1.png')} style={styles.img} />
+            <Text style={styles.urlImg}>
+              resolucion-754-del-26-de-noviembre-2021.pdf
+            </Text>
+          </View>
+          <View style={styles.documentImage1(false, false, true)}>
+            <Image source={require('../../img/pdf1.png')} style={styles.img} />
+            <Text style={styles.urlImg}>
+              resolucion-754-del-26-de-noviembre-2021.pdf
+            </Text>
+          </View>
+          <View style={styles.documentImage1(false, false, false)}>
+            <Image source={require('../../img/pdf1.png')} style={styles.img} />
+            <Text style={styles.urlImg}>
+              resolucion-754-del-26-de-noviembre-2021.pdf
+            </Text>
+          </View>
+          <View style={styles.documentImage1(false, false, true)}>
+            <Image source={require('../../img/pdf1.png')} style={styles.img} />
+            <Text style={styles.urlImg}>
+              resolucion-754-del-26-de-noviembre-2021.pdf
+            </Text>
+          </View>
+          <View style={styles.documentImage1(false, true, false)}>
+            <Image source={require('../../img/pdf1.png')} style={styles.img} />
+            <Text style={styles.urlImg}>
+              resolucion-754-del-26-de-noviembre-2021.pdf
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -157,9 +140,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     width: '100%',
     height: '100%',
-    paddingTop: StatusBar.currentHeight,
-    paddingBottom: StatusBar.currentHeight,
-    paddingVertical: 20,
   },
   dataDocuments: {
     backgroundColor: 'white',

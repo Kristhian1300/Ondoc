@@ -17,7 +17,7 @@ export const ListDocuments = ({
     setCurrentTab('Details');
   };
   return (
-    <View>
+    <ScrollView>
       {productList && (
         <FlatList
           style={{
@@ -44,6 +44,6 @@ export const ListDocuments = ({
           }}
         />
       )}
-    </View>
+    </ScrollView>
   );
 };

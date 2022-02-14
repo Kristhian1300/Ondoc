@@ -18,7 +18,15 @@ const CustomButtonLogin = (
           bgColor ? { backgroundColor: bgColor } : {},
         ]}
       >
-        <Text>{text}</Text>
+        <Text
+          style={[
+            styles.text,
+            styles[`text_${type}`],
+            fgColor ? { color: fgColor } : {},
+          ]}
+        >
+          {text}
+        </Text>
       </Pressable>
     </>
   );

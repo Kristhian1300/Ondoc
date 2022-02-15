@@ -1,6 +1,12 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, Image } from 'react-native';
-import { Text, Card, Button, Icon } from 'react-native-elements';
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
+import { Text, Card, Icon } from 'react-native-elements';
 import CustomButton from '../CustomButton';
 
 const CustomCards = ({
@@ -95,11 +101,16 @@ const CustomCards = ({
                   {municipalitiesDepartments}
                 </Text>
                 <View>
-                  <CustomButton
-                    text="Ver mas"
+                  {/*<Button
+                    style={styles.button}
                     onPress={onPress}
-                    type="TERTIARY2"
-                  />
+                    color="#BB3011"
+                    title="Ver mas"
+                  />*/}
+
+                  <TouchableOpacity onPress={onPress} style={styles.button}>
+                    <Text style={styles.buttonText}>Saber más</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -108,7 +119,7 @@ const CustomCards = ({
               <Text style={styles.fonts} h5>
                 N# documento: {content}, Fecha de vencimiento: {expirationData}
                 </Text>*/}
-              <Card.Divider style={{ paddingBottom: 20 }} />
+              <Card.Divider style={{ paddingBottom: 30 }} />
               <CustomButton
                 style={{ backgroundColor: 'red' }}
                 text="Details"
@@ -149,6 +160,19 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: 331,
+  },
+  button: {
+    backgroundColor: '#BB3011',
+    width: 130,
+    height: 55,
+    padding: 20,
+    alignItems: 'center',
+    textAlign: 'center',
+    borderRadius: 30,
+    marginLeft: 190,
+  },
+  buttonText: {
+    color: 'white',
   },
 });
 

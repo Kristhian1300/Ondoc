@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, RefreshControl } from 'react-native';
+import { View, FlatList, RefreshControl, ScrollView } from 'react-native';
 import CustomCards from '../../components/CustomCards/CustomCards';
 
 import { useNavigation } from '@react-navigation/core';

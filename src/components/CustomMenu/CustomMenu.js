@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { API, Auth } from 'aws-amplify';
 import * as queries from '../../graphql/queries';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { ListDocuments } from '../../screens/HomeScreen/ListDocuments';
 import index from '../../screens/HomeScreen';
@@ -15,7 +15,7 @@ import { fecha } from '../../../utils/day';
 
 const expiredDocuments = [];
 
-const CustomMenu = ({ setCurrentTab, setDocumentID, title }) => {
+const CustomMenu = ({ setCurrentTab, setDocumentID, title, user }) => {
   const [data, setData] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [send, setSend] = useState(0);
@@ -113,36 +113,23 @@ const CustomMenu = ({ setCurrentTab, setDocumentID, title }) => {
               fontSize: 24,
               alignSelf: 'center',
               color: 'white',
-              fontSize: 25,
               fontWeight: 'bold',
               padding: 20,
             }}
           >
-            Titulos mineros
+            Titulos mineros {'\n'}
             <Text
               style={{
-                fontSize: 11,
+                fontSize: 20,
                 alignSelf: 'center',
                 color: 'white',
-                fontSize: 10,
                 padding: 90,
+                textAlign: 'center',
+                paddingTop: 30,
               }}
             >
-              {title}de
+              {user.attributes.name}
             </Text>
-          </Text>
-          <Text
-            onPress={signOut}
-            style={{
-              width: '100%',
-              textAlign: 'center',
-              color: 'red',
-              marginTop: 'auto',
-              marginVertical: 20,
-              fontSize: 20,
-            }}
-          >
-            Cerrar sesión
           </Text>
         </View>
       </LinearGradient>

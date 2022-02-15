@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 import {
   Image,
   StyleSheet,
@@ -8,38 +8,50 @@ import {
   TouchableOpacity,
   Animated,
   ScrollView,
-} from "react-native";
-import DetailsScreen from "../../screens/DetailsScreen";
+} from 'react-native';
+import DetailsScreen from '../../screens/DetailsScreen';
 
-import profile from "../../img/profile.jpg";
-import home from "../../img/home.png";
+import profile from '../../img/profile.jpg';
+import home from '../../img/home.png';
 // Tab ICons...
-import search from "../../img/search.png";
-import notifications from "../../img/notifications.png";
-import settings from "../../img/settings.png";
-import logout from "../../img/logout2.png";
+import search from '../../img/search.png';
+import notifications from '../../img/notifications.png';
+import settings from '../../img/settings.png';
+import logout from '../../img/logout2.png';
 // Menu
-import menu from "../../img/menu3.png";
+import menu from '../../img/menu3.png';
 //import close from '../../img/close.png';
-import CustomMenu from "../../components/CustomMenu";
-import OD from "../../img/OD2.png";
+import CustomMenu from '../../components/CustomMenu';
+import { API, Auth } from 'aws-amplify';
+import OD from '../../img/OD2.png';
+import { useRoute } from '@react-navigation/native';
 
 function index() {
-  const [currentTab, setCurrentTab] = useState("Home");
+  const [currentTab, setCurrentTab] = useState('Home');
   const [documentID, setDocumentID] = useState();
   // To get the curretn Status of menu ...
   const [showMenu, setShowMenu] = useState(false);
+  const route = useRoute();
+  const { user } = route.params;
 
+  console.log(user);
   // Animated Properties...
 
   const offsetValue = useRef(new Animated.Value(0)).current;
   // Scale Intially must be One...
   const scaleValue = useRef(new Animated.Value(1)).current;
   const closeButtonOffset = useRef(new Animated.Value(0)).current;
+  async function signOut() {
+    try {
+      await Auth.signOut();
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ justifyContent: "flex-start", padding: 15 }}>
+      <View style={{ justifyContent: 'flex-start', padding: 15 }}>
         <Image
           source={profile}
           style={{
@@ -47,15 +59,17 @@ function index() {
             height: 60,
             borderRadius: 10,
             marginTop: 8,
-          }}></Image>
+          }}
+        ></Image>
 
         <Text
           style={{
             fontSize: 20,
-            fontWeight: "bold",
-            color: "white",
+            fontWeight: 'bold',
+            color: 'white',
             marginTop: 20,
-          }}>
+          }}
+        >
           Jenna Ezarik
         </Text>
 
@@ -63,8 +77,9 @@ function index() {
           <Text
             style={{
               marginTop: 6,
-              color: "white",
-            }}>
+              color: 'white',
+            }}
+          >
             View Profile
           </Text>
         </TouchableOpacity>
@@ -74,13 +89,13 @@ function index() {
             // Tab Bar Buttons....
           }
 
-          {TabButton(currentTab, setCurrentTab, "Home", home)}
-          {TabButton(currentTab, setCurrentTab, "Search", search)}
-          {TabButton(currentTab, setCurrentTab, "Notifications", notifications)}
-          {TabButton(currentTab, setCurrentTab, "Settings", settings)}
+          {TabButton(currentTab, setCurrentTab, 'Home', home)}
+          {TabButton(currentTab, setCurrentTab, 'Search', search)}
+          {TabButton(currentTab, setCurrentTab, 'Notifications', notifications)}
+          {TabButton(currentTab, setCurrentTab, 'Settings', settings)}
         </View>
 
-        <View>{TabButton(currentTab, setCurrentTab, "LogOut", logout)}</View>
+        <View>{TabButton(currentTab, setCurrentTab, 'LogOut', logout)}</View>
       </View>
 
       {
@@ -90,8 +105,8 @@ function index() {
       <Animated.View
         style={{
           flexGrow: 1,
-          backgroundColor: "white",
-          position: "absolute",
+          backgroundColor: 'white',
+          position: 'absolute',
           top: 0,
           bottom: 0,
           left: 0,
@@ -101,7 +116,8 @@ function index() {
           borderRadius: showMenu ? 15 : 0,
           // Transforming View...
           transform: [{ scale: scaleValue }, { translateX: offsetValue }],
-        }}>
+        }}
+      >
         {
           // Menu Button...
         }
@@ -113,7 +129,8 @@ function index() {
                 translateY: closeButtonOffset,
               },
             ],
-          }}>
+          }}
+        >
           <TouchableOpacity
             onPress={() => {
               // Do Actions Here....
@@ -139,26 +156,29 @@ function index() {
               }).start();
 
               setShowMenu(!showMenu);
-            }}>
+            }}
+          >
             <View
               style={{
-                backgroundColor: "#8C1C06",
+                backgroundColor: '#8C1C06',
                 paddingHorizontal: 0,
                 addingVertical: 30,
                 width: 500,
                 height: 80,
-                display: "flex",
-                flexDirection: "row",
-              }}>
+                display: 'flex',
+                flexDirection: 'row',
+              }}
+            >
               <Image
                 source={showMenu ? logout : menu}
                 style={{
                   width: 50,
                   height: 30,
-                  tintColor: "white",
-                  position: "relative",
+                  tintColor: 'white',
+                  position: 'relative',
                   top: 30,
-                }}></Image>
+                }}
+              ></Image>
               <Image
                 source={OD}
                 style={[
@@ -169,22 +189,23 @@ function index() {
                     paddingTop: 130,
                     paddingBottom: 80,
                     marginTop: 30,
-                    position: "relative",
+                    position: 'relative',
                     bottom: 85,
                     left: 110,
                   },
                 ]}
-                resizeMode='contain'
+                resizeMode="contain"
               />
             </View>
           </TouchableOpacity>
-          {currentTab == "Home" && (
+          {currentTab == 'Home' && (
             <CustomMenu
               setCurrentTab={setCurrentTab}
               setDocumentID={setDocumentID}
+              user={user}
             />
           )}
-          {currentTab == "Details" && <DetailsScreen itemId={documentID} />}
+          {currentTab == 'Details' && <DetailsScreen itemId={documentID} />}
         </Animated.View>
       </Animated.View>
     </SafeAreaView>
@@ -193,41 +214,56 @@ function index() {
 
 // For multiple Buttons...
 const TabButton = (currentTab, setCurrentTab, title, image) => {
+  async function signOut() {
+    try {
+      await Auth.signOut();
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
   return (
     <TouchableOpacity
-      onPress={() => {
-        if (title == "LogOut") {
-          // Do your Stuff...
+      onPress={async () => {
+        if (title == 'LogOut') {
+          try {
+            await Auth.signOut();
+          } catch (error) {
+            console.log('error signing out: ', error);
+          }
         } else {
           setCurrentTab(title);
         }
-      }}>
+      }}
+    >
       <View
         style={{
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: 'row',
+          alignItems: 'center',
           paddingVertical: 8,
-          backgroundColor: currentTab == title ? "white" : "transparent",
+          backgroundColor: currentTab == title ? 'white' : 'transparent',
           paddingLeft: 13,
           paddingRight: 35,
           borderRadius: 8,
           marginTop: 15,
-        }}>
+        }}
+      >
         <Image
           source={image}
           style={{
             width: 25,
             height: 25,
-            tintColor: currentTab == title ? "#8C1C06" : "white",
-          }}></Image>
+            tintColor: currentTab == title ? '#8C1C06' : 'white',
+          }}
+        ></Image>
 
         <Text
           style={{
             fontSize: 15,
-            fontWeight: "bold",
+            fontWeight: 'bold',
             paddingLeft: 15,
-            color: currentTab == title ? "#8C1C06" : "white",
-          }}>
+            color: currentTab == title ? '#8C1C06' : 'white',
+          }}
+        >
           {title}
         </Text>
       </View>
@@ -238,13 +274,13 @@ const TabButton = (currentTab, setCurrentTab, title, image) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#8C1C06",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
+    backgroundColor: '#8C1C06',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
   containerCenter: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
 });
 

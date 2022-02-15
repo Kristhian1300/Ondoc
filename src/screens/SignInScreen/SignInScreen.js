@@ -11,7 +11,7 @@ import {
   SafeAreaView,
   Alert,
 } from 'react-native';
-import logo from '../../img/logo.png';
+import logo from '../../img/OD2.png';
 import user from '../../img/user.png';
 //import password from '../../img/password.png';
 import CustomInput from '../../components/CustomInput';
@@ -41,7 +41,6 @@ const SignInScreen = () => {
     setLoading(true);
     try {
       const response = await Auth.signIn(data.username, data.password);
-      console.log(response);
     } catch (e) {
       Alert.alert('Oops', e.message);
     }
@@ -121,7 +120,7 @@ const SignInScreen = () => {
                     marginTop: 0,
                     tintColor: 'white',
                     position: 'relative',
-                    bottom: 70,
+                    bottom: 46,
                     left: 12,
                   }}
                 ></Image>
@@ -167,7 +166,8 @@ const SignInScreen = () => {
 
                 <CustomButton
                   text="Ya estas registrado en onDoc?"
-                  onPress={onForgotPasswordPressed}
+                  onPress={onSignUpPress}
+                  //onPress={onForgotPasswordPressed}
                   type="TERTIARY2"
                 />
 

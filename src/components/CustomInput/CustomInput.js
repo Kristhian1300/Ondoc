@@ -30,23 +30,6 @@ const CustomInput = ({
         <>
           <View>
             <TextInput
-              /*style={styles.input}
-              value={value}
-              autoComplete={autoComplete}
-              autoCapitalize={autoCapitalize}
-              placeholder={placeholder}
-              secureTextEntry={secureTextEntry}
-              keyboardType={keyboardType}
-              returnKeyType={returnKeyType}
-              autoFocus={autoFocus}
-              onChangeText={onChangeText}
-              onBlur={onBlur}
-              onSubmitEditing={onSubmitEditing}
-              multiline={multiline || true}
-              ref={(r) => {
-                inputRef && inputRef(r);
-              }}*/
-
               value={value}
               label="Email"
               onChangeText={onChange}

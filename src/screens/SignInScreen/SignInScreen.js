@@ -10,10 +10,14 @@ import {
   TextInput,
   SafeAreaView,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
-import logo from '../../img/OD2.png';
+import logo from '../../img/OD.png';
 import user from '../../img/user.png';
-//import password from '../../img/password.png';
+import google from '../../img/google.png';
+import facebook from '../../img/facebook2.png';
+import eye from '../../img/eye.png';
+import password from '../../img/password.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 //import SocialSignInButtons from '../../components/SocialSignInButtons';
@@ -26,6 +30,7 @@ const SignInScreen = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
+  const [isSecureEntry, setIsSecureEntry] = useState(true);
 
   const {
     control,
@@ -128,7 +133,20 @@ const SignInScreen = () => {
                 <CustomInput
                   name="password"
                   placeholder="Password"
-                  secureTextEntry
+                  secureTextEntry={isSecureEntry}
+                  icon={
+                    <TouchableOpacity
+                      onPress={() => {
+                        setIsSecureEntry((prev) => !prev);
+                      }}
+                    >
+                      <Text>{isSecureEntry ? 'Mostrar' : 'Esconder'}</Text>
+                    </TouchableOpacity>
+                  }
+                  iconPosition="right"
+                  onChangeText={(value) => {
+                    onChange({ name: 'password', value });
+                  }}
                   control={control}
                   rules={{
                     required: 'Password is required',
@@ -138,7 +156,7 @@ const SignInScreen = () => {
                     },
                   }}
                 />
-                {/*<Image
+                <Image
                   source={password}
                   style={{
                     width: 25,
@@ -147,10 +165,35 @@ const SignInScreen = () => {
                     marginTop: 0,
                     tintColor: 'white',
                     position: 'relative',
-                    bottom: 70,
+                    bottom: 45,
                     left: 12,
                   }}
-                ></Image>*/}
+                ></Image>
+                <Text
+                  style={{
+                    position: 'relative',
+                    bottom: 76,
+                    left: 280,
+                    width: 30,
+                    height: 30,
+                    borderRadius: 10,
+                    tintColor: 'white',
+                  }}
+                  onPress={() => {
+                    setIsSecureEntry((prev) => !prev);
+                  }}
+                >
+                  <Image
+                    source={eye}
+                    style={{
+                      width: 30,
+                      height: 25,
+                      borderRadius: 10,
+                      marginTop: 0,
+                      tintColor: 'white',
+                    }}
+                  ></Image>
+                </Text>
 
                 <CustomButton
                   style={{ backgroundColor: 'black' }}
@@ -158,14 +201,47 @@ const SignInScreen = () => {
                   onPress={handleSubmit(onSignInPressed)}
                 />
 
+                <View style={styles.btnSocialmedia}>
+                  <TouchableOpacity style={styles.googleBtn}>
+                    <Text style={styles.buttonGoogle}>
+                      <Image
+                        source={google}
+                        style={{
+                          width: 25,
+                          height: 25,
+                          borderRadius: 10,
+                          marginTop: 0,
+                          tintColor: 'white',
+                        }}
+                      ></Image>
+                      Google
+                    </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity style={styles.googleBtn}>
+                    <Text style={styles.buttonGoogle}>
+                      <Image
+                        source={facebook}
+                        style={{
+                          width: 25,
+                          height: 25,
+                          borderRadius: 10,
+                          marginTop: 0,
+                        }}
+                      ></Image>
+                      Facebook
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+
                 <CustomButton
-                  text="Forgot password?"
+                  text="¿Olvidaste tu contraseña?"
                   onPress={onForgotPasswordPressed}
                   type="TERTIARY2"
                 />
 
                 <CustomButton
-                  text="Ya estas registrado en onDoc?"
+                  text="¿Ya estás registrado en onDoc?"
                   onPress={onSignUpPress}
                   //onPress={onForgotPasswordPressed}
                   type="TERTIARY2"
@@ -214,13 +290,13 @@ const styles = StyleSheet.create({
   card: {
     width: '75%',
     padding: 20,
-    paddingTop: 80,
+    paddingTop: 20,
   },
   cardContent: {
     color: '#fff',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 12,
-    height: 400,
+    height: 450,
   },
   container: {
     marginLeft: 15,
@@ -237,6 +313,24 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     textAlign: 'center',
+  },
+  buttonGoogle: {
+    color: 'white',
+  },
+  googleBtn: {
+    backgroundColor: '#8C1C06',
+    width: 130,
+    height: 70,
+    padding: 15,
+    alignItems: 'center',
+    textAlign: 'center',
+    borderRadius: 25,
+    marginLeft: 15,
+  },
+  btnSocialmedia: {
+    display: 'flex',
+    flexDirection: 'row',
+    margin: 10,
   },
 });
 

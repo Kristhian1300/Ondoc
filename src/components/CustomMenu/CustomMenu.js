@@ -107,10 +107,10 @@ const CustomMenu = ({ setCurrentTab, setDocumentID, title, user }) => {
         colors={['#8C1C06', '#8C1C06', '#8C1C06']}
         style={styles.body}
       >
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, paddingLeft: 20 }}>
           <Text
             style={{
-              fontSize: 24,
+              fontSize: 25,
               alignSelf: 'center',
               color: 'white',
               fontWeight: 'bold',
@@ -120,17 +120,51 @@ const CustomMenu = ({ setCurrentTab, setDocumentID, title, user }) => {
             Titulos mineros {'\n'}
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 15,
                 alignSelf: 'center',
                 color: 'white',
                 padding: 90,
                 textAlign: 'center',
                 paddingTop: 30,
               }}
+            ></Text>
+          </Text>
+
+          <View
+            style={{
+              color: 'white',
+              paddingLeft: 140,
+            }}
+          >
+            <Text
+              style={{
+                color: 'white',
+                marginBottom: 0,
+                marginLeft: -30,
+                fontSize: 20,
+              }}
             >
               {user.attributes.name}
             </Text>
-          </Text>
+          </View>
+
+          <View
+            style={{
+              color: 'white',
+              paddingLeft: 140,
+            }}
+          >
+            <Text
+              style={{
+                color: 'white',
+                marginBottom: 0,
+                marginLeft: -30,
+                fontSize: 20,
+              }}
+            >
+              {fecha}
+            </Text>
+          </View>
         </View>
       </LinearGradient>
 

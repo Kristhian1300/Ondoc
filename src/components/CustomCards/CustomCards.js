@@ -20,125 +20,159 @@ const CustomCards = ({
 }) => {
   return (
     <>
-      <ScrollView>
-        <View style={styles.container}>
-          <Card
-            containerStyle={{ marginTop: 30, height: 290 }}
-            style={styles.divider}
-          >
-            <View style={styles.divider}>
-              <View>
+      <View style={styles.container}>
+        <ScrollView>
+          <Card>
+            <View style={{ display: 'flex', flexDirection: 'row' }}>
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  width: 188,
+                  height: 50,
+                  padding: 11,
+                }}
+              >
                 <Text style={{ color: '#BB3011', fontWeight: 'bold' }}>
                   Estado Expediente
                 </Text>
-                <Text
-                  style={{
-                    fontSize: 10,
-                    paddingLeft: 266,
-                    bottom: 16,
-                  }}
-                >
-                  VIGENTE
-                </Text>
               </View>
-              <View>
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  width: 150,
+                  height: 50,
+                  padding: 11,
+                }}
+              >
+                <Text style={{ color: '#707070' }}>VIGENTE</Text>
+              </View>
+            </View>
+
+            <View style={{ display: 'flex', flexDirection: 'row' }}>
+              <View
+                style={{
+                  backgroundColor: '#F8F8F8',
+                  width: 188,
+                  height: 75,
+                  padding: 11,
+                }}
+              >
                 <Text style={{ color: '#BB3011', fontWeight: 'bold' }}>
                   Titulares
                 </Text>
-                <Card.Title
-                  style={{
-                    fontSize: 8,
-                    paddingLeft: 80,
-                    bottom: 16,
-                    color: 'gray',
-                  }}
-                >
-                  {title}
-                </Card.Title>
               </View>
-              <View>
+              <View
+                style={{
+                  backgroundColor: '#F8F8F8',
+                  width: 150,
+                  height: 75,
+                  padding: 11,
+                }}
+              >
+                <Text style={{ color: '#707070' }}>{title}</Text>
+              </View>
+            </View>
+
+            <View style={{ display: 'flex', flexDirection: 'row' }}>
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  width: 188,
+                  height: 75,
+                  padding: 11,
+                }}
+              >
                 <Text style={{ color: '#BB3011', fontWeight: 'bold' }}>
                   Modalidad
                 </Text>
-                <Text
-                  style={{
-                    fontSize: 10,
-                    paddingLeft: 109,
-                    bottom: 16,
-                    color: 'gray',
-                  }}
-                >
-                  {modality}
-                </Text>
               </View>
-              <View>
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  width: 150,
+                  height: 75,
+                  padding: 11,
+                }}
+              >
+                <Text style={{ color: '#707070' }}>{modality}</Text>
+              </View>
+            </View>
+
+            <View style={{ display: 'flex', flexDirection: 'row' }}>
+              <View
+                style={{
+                  backgroundColor: '#F8F8F8',
+                  width: 188,
+                  height: 80,
+                  padding: 11,
+                }}
+              >
                 <Text style={{ color: '#BB3011', fontWeight: 'bold' }}>
                   Minerales
                 </Text>
-                <Text
-                  style={{
-                    fontSize: 10,
-                    paddingLeft: 110,
-                    bottom: 16,
-                    color: 'gray',
-                  }}
-                >
-                  {minerals}
+              </View>
+              <View
+                style={{
+                  backgroundColor: '#F8F8F8',
+                  width: 150,
+                  height: 80,
+                  padding: 11,
+                }}
+              >
+                <Text style={{ color: '#707070' }}>{minerals}</Text>
+              </View>
+            </View>
+
+            <View style={{ display: 'flex', flexDirection: 'row' }}>
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  width: 188,
+                  height: 80,
+                  padding: 11,
+                }}
+              >
+                <Text style={{ color: '#BB3011', fontWeight: 'bold' }}>
+                  Municipios / Departamentos
                 </Text>
               </View>
-              <View>
-                <Text style={{ color: '#BB3011', fontWeight: 'bold' }}>
-                  Municipios /{'\n'} Departamentos
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 10,
-                    paddingLeft: 112,
-                    bottom: 16,
-                    color: 'gray',
-                  }}
-                >
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  width: 150,
+                  height: 80,
+                  padding: 11,
+                }}
+              >
+                <Text style={{ color: '#707070' }}>
                   {municipalitiesDepartments}
                 </Text>
-                <View>
-                  {/*<Button
-                    style={styles.button}
-                    onPress={onPress}
-                    color="#BB3011"
-                    title="Ver mas"
-                  />*/}
-
-                  <TouchableOpacity onPress={onPress} style={styles.button}>
-                    <Text style={styles.buttonText}>Saber más</Text>
-                  </TouchableOpacity>
-                </View>
               </View>
             </View>
-            <View>
-              {/*<Card.Title>{title}</Card.Title>
-              <Text style={styles.fonts} h5>
-                N# documento: {content}, Fecha de vencimiento: {expirationData}
-                </Text>*/}
-              <Card.Divider style={{ paddingBottom: 30 }} />
-              <CustomButton
-                style={{ backgroundColor: 'red' }}
-                text="Details"
+
+            <View style={{ backgroundColor: 'white', padding: 15 }}>
+              <TouchableOpacity
                 onPress={onPress}
-                type="TERTIARY2"
-              />
+                style={{ paddingBottom: 15 }}
+                style={styles.button}
+              >
+                <Text style={styles.buttonText}>Saber más</Text>
+              </TouchableOpacity>
             </View>
           </Card>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#f5f5f5',
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
+    paddingBottom: 80,
   },
   fonts: {
     marginBottom: 8,
@@ -163,13 +197,13 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#BB3011',
-    width: 130,
+    width: 110,
     height: 55,
-    padding: 20,
+    padding: 18,
     alignItems: 'center',
     textAlign: 'center',
     borderRadius: 30,
-    marginLeft: 190,
+    marginLeft: 210,
   },
   buttonText: {
     color: 'white',
